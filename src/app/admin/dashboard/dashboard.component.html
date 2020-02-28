@@ -1,0 +1,67 @@
+<div class="dashboard-main-wrapper">
+  <app-admin-navbar></app-admin-navbar>
+  <app-admin-sidebar></app-admin-sidebar>
+
+  <div class="dashboard-wrapper">
+
+    <!--CONTENT-->
+    <div class="container-fluid dashboard-content">
+        <!-- ============================================================== -->
+        <!-- pageheader -->
+
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h2 class="pageheader-title">Manage Units</h2>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end pageheader -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="card" style="min-height:533px">
+                    <div class="card-body">
+                        <div class=" float-right">
+                            <div class="btn-group" role="group" aria-label="Action">
+                                <button type="button" class="btn btn-brand" data-toggle="tooltip" data-placement="top" title="Refresh" onClick="reload()">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                                <button type="button" class="btn btn-brand" data-toggle="tooltip" data-placement="top" title="Print">
+                                    <i class="fa fa-print"></i>
+                                </button>
+                                <button type="button" class="btn btn-brand" data-toggle="tooltip" data-placement="top" title="Add Data" onclick="show_add()">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-responsive pt-4">
+                            <table class="table table-bordered table-hovered" id="datatable_ajax">
+                                <thead>
+                                    <tr>
+                                        <th width='5%'>No</th>
+                                        <th>Unit Name</th>
+                                        <th width='10%'>Action</th>
+                                    </tr>
+                                </thead>
+                                <thead>
+                                    <tr style="background:#f4f4ff">
+                                        <td></td>
+                                        <td>
+                                            <input type="text" class="form-control" placeholder="Search Unit Name..." id="src_name">
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,225 @@
+<div class="dashboard-main-wrapper">
+    <app-admin-navbar></app-admin-navbar>
+    <app-admin-sidebar></app-admin-sidebar>
+
+    <div class="dashboard-wrapper">
+
+      <!--CONTENT-->
+      <div class="container-fluid dashboard-content">
+          <!-- ============================================================== -->
+          <!-- pageheader -->
+
+          <!-- ============================================================== -->
+          <div class="row">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="page-header">
+                      <h2 class="pageheader-title">Manage Units</h2>
+
+
+                  </div>
+              </div>
+          </div>
+          <!-- ============================================================== -->
+          <!-- end pageheader -->
+          <!-- ============================================================== -->
+
+          <div class="row">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="card" style="min-height:533px">
+                      <div class="card-body">
+
+                          <!--
+                          <div class="table-responsive pt-4">
+                              <table class="table table-bordered table-hovered" id="datatable_ajax">
+                                  <thead>
+                                      <tr>
+                                          <th width='5%'>ID</th>
+                                          <th>Unit Name</th>
+                                          <th width='10%'>Action</th>
+                                      </tr>
+                                  </thead>
+                                  <thead>
+                                      <tr style="background:#f4f4ff">
+                                          <td></td>
+                                          <td>
+                                              <input type="text" class="form-control" placeholder="Search Unit Name..." id="src_name">
+                                          </td>
+                                          <td></td>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let unit of units">
+                                      <td class="text-center">{{unit.id}}</td>
+                                      <td>{{unit.unit_name}}</td>
+                                      <td></td>
+                                    </tr>
+                                  </tbody>
+                              </table>
+                          </div>-->
+                          <span *ngFor='let product of products'>{{product.name}}</span>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class=" float-right pb-4">
+                                    <div class="btn-group" role="group" aria-label="Action">
+                                        <button type="button" class="btn btn-brand btn-md" data-toggle="tooltip" data-placement="top" title="Refresh" (click)="reload()">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-brand btn-md" data-toggle="tooltip" data-placement="top" title="Export PDF" (click)="exportPDF()">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-brand btn-md" data-toggle="tooltip" data-placement="top" title="Export Excel" (click)="exportExcel()" >
+                                            <i class="fas fa-file-excel"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-brand btn-md" title="Add Data" (click)="showDialog()">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="col-md-12">
+                                <p-table #tt [value]="units" [paginator]="true" [rows]="3" [first]="first" sortField="unit_name" [globalFilterFields]="['unit_name','id']" [responsive]="true">
+                                    <ng-template pTemplate="caption">
+                                        <div class="row">
+                                          <div class="col-md-12">
+                                            <div class="float-right">
+                                                <div class="input-group mb-3">
+                                                  <div class="input-group-prepend">
+                                                    <span class="input-group-text btn-brand" id="basic-addon1">
+                                                      <i class="fas fa-search"></i>
+                                                    </span>
+                                                  </div>
+                                                  <input type="text" pInputText size="50" placeholder="Global Filter..." (input)="tt.filterGlobal($event.target.value, 'contains')" class="form-control" aria-describedby="basic-addon1">
+                                                </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </ng-template>
+                                    <ng-template pTemplate="header">
+                                      <tr>
+                                        <th *ngFor='let col of cols' [style.width]="col.width" [pSortableColumn]="col.field">
+                                          {{col.header}}
+                                          <p-sortIcon [field]="col.field"></p-sortIcon>
+                                        </th>
+                                      </tr>
+                                      <tr>
+                                        <th *ngFor="let col of cols" [ngSwitch]="col.field" [style.width]="col.width">
+                                            <input *ngSwitchCase="'unit_name'" class="form-control form-control-sm" pInputText type="text" (input)="tt.filter($event.target.value, col.field, col.filterMatchMode)">
+                                        </th>
+                                      </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-unit>
+
+                                      <tr>
+                                        <td class="text-center" width='5%'>{{unit.id}}</td>
+                                        <td>{{unit.unit_name}}</td>
+                                        <td class="text-center">
+                                          <button class="btn btn-warning btn-sm" (click)="getUnit(unit.id)">
+                                            <i class="fas fa-edit"></i>
+                                          </button>
+                                          <button class="btn btn-danger btn-sm ml-2" (click)="deleteUnit(unit)">
+                                            <i class="fas fa-trash"></i>
+                                          </button>
+                                        </td>
+                                      </tr>
+                                      <!--
+                                      <tr>
+                                        <td *ngFor='let col of cols'>
+                                          {{unit[col.field]}}
+                                        </td>
+                                      </tr>-->
+                                    </ng-template>
+                                    <ng-template pTemplate="summary">
+                                        Total {{units?.length}} data
+                                    </ng-template>
+                                </p-table>
+                              </div>
+
+                            </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+    </div>
+</div>
+
+<p-confirmDialog #cd header="Confirmation" icon="fas fa-exclamation-triangle" position="top">
+  <p-footer>
+      <button type="button" label="Yes" (click)="cd.accept()" class="btn btn-danger"><i class="fas fa-check"></i> Yes</button>
+      <button type="button" label="No" (click)="cd.reject()" class="btn btn-gray"><i class="fas fa-times"></i> Nope!</button>
+  </p-footer>
+</p-confirmDialog>
+
+<p-dialog *ngIf='editData'  header="Edit Unit" [(visible)]="displayDialogEdit" [draggable]="false" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000" [maximizable]="false" [resizable]="false" [focusOnShow]="false" position="bottom">
+    <form #ef="ngForm" (ngSubmit)="updateData(ef)" ngNativeValidate>
+      <div class="row">
+
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="unit_name">Unit Name</label>
+              <input #edit_unit_name type="text" [(ngModel)]="editData.unit_name" class="form-control" name="unit_name" autocomplete="off" ngModel required pInputText pFocusTrap />
+            </div>
+          </div>
+          <hr/>
+          <div class="col-md-12">
+            <div class="form-group">
+              <button type="submit" class="btn btn-brand btn-block"><i class="fa fa-save"></i> SAVE</button>
+            </div>
+          </div>
+
+      </div>
+    </form>
+</p-dialog>
+
+<p-dialog  header="Add Unit" [(visible)]="displayDialog" [draggable]="false" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000" [maximizable]="false" [resizable]="false" [focusOnShow]="false" position="bottom" (onShow)="show_add()">
+    <form #f="ngForm" (ngSubmit)="addData(f)" ngNativeValidate>
+      <div class="row">
+
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="unit_name">Unit Name</label>
+              <input #add_unit_name type="text" class="form-control" name="unit_name" autocomplete="off" ngModel required pInputText pFocusTrap />
+            </div>
+          </div>
+          <hr/>
+          <div class="col-md-12">
+            <div class="form-group">
+              <button type="submit" class="btn btn-brand btn-block" id="btn-add"><i class="fa fa-save"></i> SAVE</button>
+            </div>
+          </div>
+
+      </div>
+    </form>
+</p-dialog>
+<!--
+<div class="modal fade" tabindex="-1" role="dialog" id="md-add">
+    <div class="modal-dialog" role="document">
+      <form action="#" method="POST" id="form-add">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ADD UNIT</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="unit_name">Unit Name</label>
+                            <input type="text" name="unit_name" class="form-control" pInputText autocomplete="off" id="add_unit_name" required  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-gray" data-dismiss="modal">CANCEL</button>
+                <button type="submit" class="btn btn-brand" id="btn-add"><i class="fa fa-save"></i> SAVE</button>
+            </div>
+
+        </div>
+      </form>
+    </div>
+</div>
+-->

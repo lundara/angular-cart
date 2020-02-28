@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+
+<div class="container pt-5">
+
+  <h2>Product List <span *ngIf='test'>{{ test }}</span> </h2>
+  <div class="row">
+    <div class="col-md-4 mt-5" *ngFor='let product of products'>
+      <div class="card">
+        <img class="card-img-top" src="../../assets/images/dummy-product.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h2 class="card-title">{{product.name}}</h2>
+          <h5 class="badge badge-info">{{product.category}}</h5>
+          <h4>{{product.price | currency:'':'symbol-narrow' }}</h4>
+          <p class="card-text">{{product.description | slice:0:100 }} ...</p>
+          <div class="text-center">
+            <button class="btn btn-primary btn-sm" (click)="addToCart()">Add to Cart</button>
+            <button class="btn btn-primary btn-sm ml-2" (click)="compareClick()">Compare</button>
+            <button class="btn btn-primary btn-sm ml-2">Wishlist</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
