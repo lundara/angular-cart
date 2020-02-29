@@ -5,6 +5,9 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { UnitsComponent } from './admin/units/units.component';
 import { ExamsComponent } from './admin/exams/exams.component';
 import { ProductsComponent } from './products/products.component';
+import { CartComponent } from './cart/cart.component';
+import { CompareComponent } from './compare/compare.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 const routes: Routes = [
@@ -12,7 +15,10 @@ const routes: Routes = [
   {path: 'admin/dashboard', component: DashboardComponent},
   {path: 'admin/units', component: UnitsComponent},
   {path: 'admin/exams', component: ExamsComponent},
-  {path: 'products', component: ProductsComponent}
+  {path: 'products', component: ProductsComponent},
+  {path: 'cart', component: CartComponent},
+  {path: 'compare', component: CompareComponent},
+  {path: 'wishlist', component: WishlistComponent}
 ];
 
 @NgModule({

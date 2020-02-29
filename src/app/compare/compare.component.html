@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Compare</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hovered">
+
+          <tbody>
+            <tr>
+              <td width="15%">Product Name</td>
+              <td *ngFor='let data of compare' class="text-center font-weight-bold">{{ data.name }}</td>
+            </tr>
+            <tr>
+              <td width="15%">Category</td>
+              <td *ngFor='let data of compare' class="text-center font-weight-bold">{{ data.category }}</td>
+            </tr>
+            <tr>
+              <td width="15%">Price</td>
+              <td *ngFor='let data of compare' class="text-center font-weight-bold">{{ data.price | currency:'':'symbol-narrow' }}</td>
+            </tr>
+            <tr>
+                <td width="15%"></td>
+                <td *ngFor='let data of compare' class="text-center font-weight-bold">
+                  <button class="btn btn-sm btn-danger" (click)="deleteItemCompare(data)"> <i class="fas fa-trash"></i> </button>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

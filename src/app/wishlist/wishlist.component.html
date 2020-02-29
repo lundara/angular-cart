@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Wishlist</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hovered">
+          <thead>
+            <tr>
+              <td>Product</td>
+              <td width="10%">Price</td>
+              <td width="10%">Action</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let data of wishlist'>
+              <td>{{ data.name }}</td>
+              <td>{{ data.price | currency:'':'symbol-narrow' }}</td>
+              <td>
+                <button class="btn btn-sm btn-danger" (click)="deleteItemWishlist(data)"> <i class="fas fa-trash"></i> </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

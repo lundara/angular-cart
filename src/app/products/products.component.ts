@@ -27,6 +27,7 @@ export class ProductsComponent implements OnInit{
 
   test: string;
   cartItem: number;
+  carts: any[];
 
   pnotify = undefined;
 
@@ -53,16 +54,25 @@ export class ProductsComponent implements OnInit{
     store.subscribe(() => {
       this.test = store.getState().product.test;
       this.cartItem = store.getState().product.cartItem;
+      this.carts = store.getState().product.products;
     });
+
+    console.log(this.carts);
   }
 
 
-  addToCart(){
-    store.dispatch({ type:'ADD_TO_CART' });
+  addToCart(product){
+    //console.log(product);
+    store.dispatch({ type:'ADD_TO_CART', products: product, text: 'hai' });
   }
 
-  compareClick(){
-    store.dispatch({ type:'RESET_PRODUCT' });
+  compareClick(product){
+    store.dispatch({ type:'ADD_COMPARE', products: product });
+    //this.test = store.getState().product.test;
+  }
+
+  wishlistClick(product){
+    store.dispatch({ type:'ADD_WISHLIST', products: product });
     //this.test = store.getState().product.test;
   }
 

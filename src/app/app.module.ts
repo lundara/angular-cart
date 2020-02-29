@@ -34,6 +34,9 @@ import { PNotifyService } from './pnotify.service';
 import { ExamsComponent } from './admin/exams/exams.component';
 import { ProductsComponent } from './products/products.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CartComponent } from './cart/cart.component';
+import { CompareComponent } from './compare/compare.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 registerLocaleData(localeid, 'id');
@@ -47,7 +50,10 @@ registerLocaleData(localeid, 'id');
     UnitsComponent,
     ExamsComponent,
     ProductsComponent,
-    NavbarComponent
+    NavbarComponent,
+    CartComponent,
+    CompareComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,
