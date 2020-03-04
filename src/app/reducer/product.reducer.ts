@@ -2,6 +2,7 @@ export const productReducer = (state = {
   test: null,
   cartItem: 0,
   products: [],
+  listProducts: []
 }, action) =>{
   switch (action.type){
     case "ADD_TO_CART":
@@ -34,6 +35,10 @@ export const productReducer = (state = {
           ]
         }
       }
+    break;
+
+    case "ADD_LIST_PRODUCTS":
+
     break;
 
     case "UPDATE_QTY_CART_ITEM":

@@ -37,6 +37,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CartComponent } from './cart/cart.component';
 import { CompareComponent } from './compare/compare.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { HomeComponent } from './home/home.component';
 
 
 registerLocaleData(localeid, 'id');
@@ -53,7 +54,8 @@ registerLocaleData(localeid, 'id');
     NavbarComponent,
     CartComponent,
     CompareComponent,
-    WishlistComponent
+    WishlistComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

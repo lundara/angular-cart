@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, tap, filter } from 'rxjs/operators';
+import * as _ from 'lodash';
 
 import {Product} from './product';
 
@@ -21,6 +22,6 @@ export class ProductsService {
   ) {}
 
   allData():Observable<Product[]>{
-    return this.http.get<Product[]>(this.apiUrl);
+    return this.http.get<Product[]>(this.apiUrl).pipe();
   }
 }
