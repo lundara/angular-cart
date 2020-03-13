@@ -2,6 +2,7 @@ export const productReducer = (state = {
   test: null,
   cartItem: 0,
   products: [],
+  tokenId: null,
   listProducts: []
 }, action) =>{
   switch (action.type){
@@ -34,6 +35,13 @@ export const productReducer = (state = {
             }
           ]
         }
+      }
+    break;
+
+    case "ADD_TOKEN_ID_STRIPEJS":
+      state = {
+        ...state,
+        tokenId: action.tokenId
       }
     break;
 

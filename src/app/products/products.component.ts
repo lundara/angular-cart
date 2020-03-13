@@ -38,7 +38,7 @@ interface Filter {
 
 export class ProductsComponent implements OnInit{
 
-  products: Product[];
+  products: Product[] = [];
   allProduct: Product[];
   arrFil: Product[];
   cols: any[];
@@ -58,6 +58,7 @@ export class ProductsComponent implements OnInit{
 
   params = {};
   @ViewChild('dropCategory') dropCategory: Dropdown;
+  @Inject('BASE_URL') baseUrl: string;
   constructor(
     private pnotifyService: PNotifyService,
     private confirmationService: ConfirmationService,
@@ -90,9 +91,8 @@ export class ProductsComponent implements OnInit{
       this.carts = store.getState().product.products;
     });
 
-    console.log(this.carts);
+    console.log(this.baseUrl);
   }
-
 
   goFilter() {
 
@@ -100,7 +100,6 @@ export class ProductsComponent implements OnInit{
 
     if(this.filSearch!==""){
       this.arrFil = _.filter(this.arrFil, (e) => { return _.includes( _.lowerCase(e.name), _.lowerCase(this.filSearch) ) });
-      //this.params.push({"search": "ada"});
       this.router.navigate(['/products'], { queryParams: {"search": this.filSearch}, queryParamsHandling: 'merge'  });
       this.params['search'] = this.filSearch;
     }
@@ -151,6 +150,7 @@ export class ProductsComponent implements OnInit{
     this.allData();
     this.btnReset = false;
     this.filSearch = "";
+    this.filCategory = null;
     //dropdown.resetFilter();
   }
 

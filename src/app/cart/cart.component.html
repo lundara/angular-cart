@@ -29,12 +29,19 @@
             </tr>
             <tr>
               <td colspan="3" class="text-center"><strong>GRAND TOTAL</strong></td>
-              <td></td>
-              <td class="text-center"><strong *ngIf='gtotal'>{{ gtotal }}</strong></td>
+              <td><strong *ngIf='gtotal'>{{ gtotal }}</strong></td>
+              <td class="text-center"></td>
             </tr>
           </tbody>
         </table>
       </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <a [routerLink]="['/shipping']" class="btn btn-info float-right" *ngIf="cart.length != 0">Continue Shipping</a>
     </div>
   </div>
 

@@ -9,6 +9,8 @@ import { CartComponent } from './cart/cart.component';
 import { CompareComponent } from './compare/compare.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { HomeComponent } from './home/home.component';
+import { ShippingComponent } from './shipping/shipping.component';
+import { ReceiptComponent } from './receipt/receipt.component';
 
 
 const routes: Routes = [
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path: 'cart', component: CartComponent},
   {path: 'compare', component: CompareComponent},
   {path: 'wishlist', component: WishlistComponent},
+  {path: 'shipping', component: ShippingComponent},
+  {path: 'receipt', component: ReceiptComponent},
   {path: '', component: HomeComponent  }
 ];
 

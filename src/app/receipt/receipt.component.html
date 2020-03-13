@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+<div class="container pt-5">
+    <div class="row">
+      <div class="col-md-12 text-center">
+          <h1 *ngIf='tokenId'>Your Token ID : <span >{{ tokenId }}</span></h1>
+          <hr *ngIf='tokenId'>
+          <h1>Thank you for shopping :)</h1> <br/>
+          <a [routerLink]="['/products']"><i class="fas fa-arrow-left"></i>  Shopping again !</a>
+      </div>
+    </div>
+</div>

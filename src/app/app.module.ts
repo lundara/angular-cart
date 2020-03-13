@@ -7,6 +7,8 @@ import {TableModule} from 'primeng/table';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {DropdownModule} from 'primeng/dropdown';
+import { NgxPayPalModule } from 'ngx-paypal';
+
 
 import { StoreModule } from '@ngrx/store';
 import { SampleReducer } from './reducer/sample.reducer';
@@ -38,7 +40,10 @@ import { CartComponent } from './cart/cart.component';
 import { CompareComponent } from './compare/compare.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { HomeComponent } from './home/home.component';
+import { ShippingComponent } from './shipping/shipping.component';
 
+import { StripeModule } from "stripe-angular";
+import { ReceiptComponent } from './receipt/receipt.component';
 
 registerLocaleData(localeid, 'id');
 
@@ -55,7 +60,9 @@ registerLocaleData(localeid, 'id');
     CartComponent,
     CompareComponent,
     WishlistComponent,
-    HomeComponent
+    HomeComponent,
+    ShippingComponent,
+    ReceiptComponent
   ],
   imports: [
     BrowserModule,
@@ -65,18 +72,20 @@ registerLocaleData(localeid, 'id');
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false },
     ),
+    NgxPayPalModule,
     FormsModule,
     ReactiveFormsModule,
     DialogModule,
     InputTextModule,
     TableModule, ConfirmDialogModule, DropdownModule,
     CommonModule,
-    StoreModule.forRoot({todos: ToDoReducer })
+    StoreModule.forRoot({todos: ToDoReducer }),
+    StripeModule.forRoot("pk_test_6FzksqWYDsUCYRvfMeV5FiY5")
 
 
 
   ],
-  providers: [PNotifyService, ConfirmationService, {provide: LOCALE_ID, useValue: 'id' }],
+  providers: [PNotifyService, ConfirmationService, {provide: LOCALE_ID, useValue: 'id' }, { provide: 'BASE_URL', useValue: 'http://localhost:4200/' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
